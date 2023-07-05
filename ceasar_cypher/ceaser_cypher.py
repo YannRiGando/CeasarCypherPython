@@ -1,5 +1,6 @@
 import random
 import char_list
+import math
 
 test_key = 9
 test_message = 'hello world'
@@ -14,13 +15,35 @@ def text_spliter(msg):
     return words_list
 
 def loop_throught_elem(word_list, key):
-    for word in word_list:              # return each word individually
-        for i in range(0, len(word)):   # loop throught each letter
-            for r in letter_list:
-               if word[i] == r:
-                   
-                   crypted_message.append(letter_list.index[r + key])                   
+    
+    letter_list_len = len(letter_list)
+    
+    for word in word_list:
+        # return each word individually
+        
+        
+        for i in range(0, len(word)):               
+            # loop throught each letter
+            
+            
+            letter_index = letter_list.index(word[i])
+            
+            crypted_index = letter_index + key
+            # print(crypted_index)
+            
+            if crypted_index > letter_list_len - 1:
+                crypted_index -= letter_list_len - 1
+            
+            # print(crypted_index)
+            
+            stored_letter = letter_list[crypted_index]
+            crypted_message.append(stored_letter)
+            
     print(crypted_message)
 
-# print(text_spliter(test_message))
-loop_throught_elem(text_spliter(test_message), test_key)
+    
+
+    
+
+clean_text = text_spliter(test_message)
+loop_throught_elem(clean_text, test_key)
